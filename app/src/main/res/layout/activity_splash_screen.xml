@@ -48,24 +48,22 @@
         android:layout_alignParentStart="true" />
 
     <TextView
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/progressBar2"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="sans-serif"
         android:text="Tap To Get Started"
         android:textColor="@android:color/holo_orange_light"
         android:textSize="40sp"
-        android:id="@+id/textView5"
-        android:fontFamily="sans-serif"
-        android:textStyle="normal|bold"
-        android:layout_marginBottom="23dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:textStyle="normal|bold" />
 
     <ProgressBar
+        android:id="@+id/progressBar2"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/progressBar2"
-        android:layout_marginTop="18dp"
         android:layout_below="@+id/txtBreeze"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>
