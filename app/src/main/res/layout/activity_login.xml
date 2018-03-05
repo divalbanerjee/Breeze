@@ -66,13 +66,16 @@
         android:layout_alignStart="@+id/etPassword"
         android:layout_alignEnd="@+id/etPassword" />
 
-    <ProgressBar
-        style="?android:attr/progressBarStyleLarge"
+
+    <TextView
+        android:id="@+id/txtStatusTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/btnSignUp"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="29dp"
-        android:id="@+id/progressBar" />
+        android:layout_marginTop="11dp"
+        android:textAlignment="center"
+        android:textColor="?android:attr/colorPressedHighlight"
+        android:visibility="visible" />
 
 </RelativeLayout>
