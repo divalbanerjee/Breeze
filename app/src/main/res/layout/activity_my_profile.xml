@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/bg3"
     tools:context="com.example.bandi.breeze.MyProfileActivity">
 
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="63dp"
         android:layout_height="63dp"
-        android:background="@color/colorAccent"
+        android:background="@android:color/transparent"
         app:srcCompat="@mipmap/ic_launcher"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="26dp" />
