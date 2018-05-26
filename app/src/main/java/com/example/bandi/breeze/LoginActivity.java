@@ -1,6 +1,7 @@
 package com.example.bandi.breeze;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -41,6 +43,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_login);
 
 
@@ -55,6 +58,8 @@ public class LoginActivity extends AppCompatActivity {
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
+
+        final Intent intent = new Intent(this, RegisterActivity.class);
 
 
         // [START initialize_auth]
@@ -76,8 +81,15 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+
+        btnRegister.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                startActivity(intent);
+            }
+        });
     }
-    
+
     @Override
     public void onStart() {
         super.onStart();
@@ -113,6 +125,8 @@ public class LoginActivity extends AppCompatActivity {
                             txtStatusTextView.onVisibilityAggregated(true);
                             txtStatusTextView.setText("Login success");
                            // updateUI(user);
+                            startActivity(new Intent(LoginActivity.this, DirectMessageActivity.class));
+
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());

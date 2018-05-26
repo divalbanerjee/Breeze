@@ -1,57 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_splash_screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/bg4"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.bandi.breeze.splashScreenActivity"
-    android:background="@color/colorPrimaryDark">
+    android:theme="@android:style/Theme.Black.NoTitleBar"
+    tools:context="com.example.bandi.breeze.splashScreenActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Welcome"
-        android:textColor="@color/colorAccent"
         android:id="@+id/txtWelcome"
-        android:fontFamily="sans-serif"
-        android:textStyle="normal|bold"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:textSize="80sp" />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="To"
-        android:textColor="@color/colorAccent"
-        android:textSize="80sp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:fontFamily="sans-serif"
+        android:text="Welcome"
+        android:textColor="@android:color/background_light"
+        android:textSize="60sp"
+        android:textStyle="normal|bold" />
+
+    <TextView
         android:id="@+id/txtTo"
-        android:fontFamily="sans-serif"
-        android:textStyle="normal|bold"
-        android:layout_below="@+id/txtWelcome"
-        android:layout_alignParentStart="true" />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Breeze"
-        android:textColor="@color/colorAccent"
-        android:textSize="90sp"
-        android:id="@+id/txtBreeze"
+        android:layout_below="@+id/txtWelcome"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp"
         android:fontFamily="sans-serif"
-        android:textStyle="normal|bold"
-        android:layout_below="@+id/txtTo"
-        android:layout_alignParentStart="true" />
+        android:text="To Breeze"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_light"
+        android:textSize="60sp"
+        android:textStyle="normal|bold" />
+
+    <TextView
+        android:id="@+id/txtBreeze"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tvContinue"
+        android:layout_alignEnd="@+id/imageView"
+        android:layout_marginBottom="14dp"
+        android:fontFamily="sans-serif"
+        android:textColor="@color/colorAccent"
+        android:textSize="60sp"
+        android:textStyle="normal|bold" />
 
     <TextView
         android:id="@+id/tvContinue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/progressBar2"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:fontFamily="sans-serif"
         android:text="Tap To Get Started"
@@ -59,11 +63,16 @@
         android:textSize="40sp"
         android:textStyle="normal|bold" />
 
-    <ProgressBar
-        android:id="@+id/progressBar2"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtBreeze"
-        android:layout_centerHorizontal="true" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="46dp"
+        android:adjustViewBounds="false"
+        android:scaleType="fitCenter"
+        android:visibility="visible"
+        app:srcCompat="@mipmap/logo" />
+
 </RelativeLayout>
