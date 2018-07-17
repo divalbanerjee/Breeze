@@ -64,7 +64,7 @@ public class RegisterActivity extends AppCompatActivity {
                     progressDialog.show();
 
 
-                    signIn(email, password);
+                    signIn(email, password, username);
                     progressDialog.dismiss();
 
                 }
@@ -77,7 +77,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    public void signIn(String email, String password){
+    public void signIn(String email, String password, String username){
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -157,4 +157,7 @@ public class RegisterActivity extends AppCompatActivity {
         return valid;
     }
 
+    private void addUserToBreezeDataBase(String UserEmail, String Username){
+
+    }
 }
