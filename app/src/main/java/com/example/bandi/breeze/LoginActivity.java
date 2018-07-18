@@ -125,7 +125,7 @@ public class LoginActivity extends AppCompatActivity {
                             txtStatusTextView.onVisibilityAggregated(true);
                             txtStatusTextView.setText("Login success");
                            // updateUI(user);
-                            startActivity(new Intent(LoginActivity.this, DirectMessageActivity.class));
+                            startActivity(new Intent(LoginActivity.this, MyProfileActivity.class));
 
                         } else {
                             // If sign in fails, display a message to the user.

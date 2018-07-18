@@ -68,7 +68,7 @@ public class RegisterActivity extends AppCompatActivity {
                     progressDialog.dismiss();
 
                 }
-                else{
+                 else{
                     txtStatusTextView.setText("Missing Info");
                 }
 

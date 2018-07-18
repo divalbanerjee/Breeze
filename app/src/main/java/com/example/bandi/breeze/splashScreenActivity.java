@@ -21,7 +21,7 @@ public class splashScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         tvContinue = (TextView) findViewById(R.id.tvContinue);
-        final Intent intent = new Intent(this, LoginActivity.class);
+        final Intent intent = new Intent(this, WarningActivity.class);
         tvContinue.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {

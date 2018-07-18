@@ -18,7 +18,9 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".MyProfileActivity" />
-        <activity android:name=".DirectMessageActivity"></activity>
+        <activity android:name=".DirectMessageActivity" />
+        <activity android:name=".RegisterWelcomeActivity" />
+        <activity android:name=".WarningActivity"></activity>
     </application>
 
 </manifest>
