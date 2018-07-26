@@ -26,9 +26,6 @@ public class RegisterActivity extends AppCompatActivity {
     private TextView txtStatusTextView;
     private Button btnRegister;
     private FirebaseAuth mAuth;
-
-
-
     private static final String TAG = "EmailPassword";
 
     @Override
