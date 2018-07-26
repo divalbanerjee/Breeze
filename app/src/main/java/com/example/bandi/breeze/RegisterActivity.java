@@ -12,11 +12,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.bandi.breeze.objects.breezeUser;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -26,6 +32,9 @@ public class RegisterActivity extends AppCompatActivity {
     private TextView txtStatusTextView;
     private Button btnRegister;
     private FirebaseAuth mAuth;
+    FirebaseDatabase database; //ada
+    DatabaseReference refer; //ada
+    breezeUser usernew; //ada
     private static final String TAG = "EmailPassword";
 
     @Override
@@ -39,6 +48,9 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister = (Button) findViewById(R.id.btnRegister);
 
         txtStatusTextView = (TextView) findViewById(R.id.txtStatusTextView) ;
+
+        refer = database.getReference().child("User"); //ada
+        usernew = new breezeUser(); //ada
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -73,6 +85,17 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
     }
+    private void getValues(){
+        usernew.setEmail(etEmail.getText().toString());
+        //usernew.setFirstName(etFirstName.getText().toString());
+       // usernew.setLastName(etLastName.getText().toString());
+        //refer.setValue(usernew.getEmail());
+        //refer.child("User03").setValue(usernew);
+        String key = refer.push().getKey();
+        refer.child(key).setValue(usernew);
+        key = "";
+        //refer.child(usernew.getEmail()).setValue(usernew);
+    }
 
     public void signIn(String email, String password, String username){
         mAuth.createUserWithEmailAndPassword(email, password)
@@ -86,6 +109,20 @@ public class RegisterActivity extends AppCompatActivity {
                             txtStatusTextView.setText("Account creation successful");
 
                             sendEmailVerification();
+
+                            refer.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                   // getValues();
+                                    //refer.child("User03").setValue(usernew);
+                                    Toast.makeText(RegisterActivity.this, "Data Sent...", Toast.LENGTH_LONG);
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                }
+                            });
                             //back to login, username and password filed in
                         } else {
                             // If sign in fails, display a message to the user.
