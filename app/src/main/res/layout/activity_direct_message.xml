@@ -33,22 +33,37 @@
         android:layout_marginStart="8dp"
         android:background="@drawable/roundtextfield"
         android:ems="10"
-        android:hint="     Say something"
         android:inputType="textPersonName"
         android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnSend"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton3"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/btnSend"
-        android:layout_width="wrap_content"
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="63dp"
         android:layout_height="42dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/roundedbutton"
-        android:text="Send"
-        android:textColor="@color/common_google_signin_btn_text_dark_default"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="289dp" />
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/ProfileBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_send"
+        tools:layout_editor_absoluteY="517dp" />
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="266dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:fontFamily="casual"
+        android:hint="Say something"
+        android:inputType="textMultiLine"
+        android:textColor="@android:color/holo_orange_dark"
+        app:layout_constraintBottom_toBottomOf="@+id/editText2"
+        app:layout_constraintEnd_toEndOf="@+id/editText2"
+        app:layout_constraintStart_toStartOf="@+id/editText2"
+        app:layout_constraintTop_toTopOf="@+id/editText2" />
 
 </android.support.constraint.ConstraintLayout>

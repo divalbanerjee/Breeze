@@ -50,7 +50,6 @@ public class RegisterActivity extends AppCompatActivity {
         txtStatusTextView = (TextView) findViewById(R.id.txtStatusTextView) ;
 
         refer = database.getReference().child("User"); //ada
-        usernew = new breezeUser(); //ada
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -87,17 +86,13 @@ public class RegisterActivity extends AppCompatActivity {
     }
     private void getValues(){
         usernew.setEmail(etEmail.getText().toString());
-        //usernew.setFirstName(etFirstName.getText().toString());
-       // usernew.setLastName(etLastName.getText().toString());
-        //refer.setValue(usernew.getEmail());
-        //refer.child("User03").setValue(usernew);
         String key = refer.push().getKey();
         refer.child(key).setValue(usernew);
         key = "";
         //refer.child(usernew.getEmail()).setValue(usernew);
     }
 
-    public void signIn(String email, String password, String username){
+    public void signIn(final String email, String password, final String username){
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -108,7 +103,15 @@ public class RegisterActivity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             txtStatusTextView.setText("Account creation successful");
 
-                            sendEmailVerification();
+                            usernew = new breezeUser(email,username);
+
+                            DatabaseReference database;
+// ...
+                            database = FirebaseDatabase.getInstance().getReference();
+                            database.child("users").child(usernew.getID()).setValue(usernew); //Adds a new user to the database
+
+                            //TODO: Setup user ID system
+                            sendEmailVerification(); //Sends verification email from noreply@breeze
 
                             refer.addValueEventListener(new ValueEventListener() {
                                 @Override
@@ -129,7 +132,7 @@ public class RegisterActivity extends AppCompatActivity {
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
                             Toast.makeText(RegisterActivity.this, "Account creation failed.",
                                     Toast.LENGTH_SHORT).show();
-                                    txtStatusTextView.setText(task.getException().toString());
+                            txtStatusTextView.setText(task.getException().toString());
                         }
                     }
                 });
@@ -141,8 +144,7 @@ public class RegisterActivity extends AppCompatActivity {
                 .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        // [START_EXCLUDE]
-
+                        // [START_EXCLUDE]\
                         if (task.isSuccessful()) {
                             Toast.makeText(RegisterActivity.this,
                                     "Verification email sent to " + user.getEmail(),
@@ -189,9 +191,5 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         return valid;
-    }
-
-    private void addUserToBreezeDataBase(String UserEmail, String Username){
-
     }
 }
