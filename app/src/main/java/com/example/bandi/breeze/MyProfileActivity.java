@@ -11,6 +11,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 
@@ -35,6 +36,8 @@ public class MyProfileActivity extends AppCompatActivity {
         breezeUser newUser;
         boolean successful;
 
+   
+        Query query = database.child("users").orderByChild("userID").equalTo(this.userID);
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

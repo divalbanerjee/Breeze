@@ -20,7 +20,8 @@
         <activity android:name=".MyProfileActivity" />
         <activity android:name=".DirectMessageActivity" />
         <activity android:name=".RegisterWelcomeActivity" />
-        <activity android:name=".WarningActivity"></activity>
+        <activity android:name=".WarningActivity" />
+        <activity android:name=".DirectoryActivity"></activity>
     </application>
 
 </manifest>
